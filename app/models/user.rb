@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def update_posts_counter
-    postsCounter += 1
+    postsCounter
     save
   end
 
