@@ -35,8 +35,8 @@ RSpec.describe Post, type: :model do
   describe '#recent_comments' do
     it 'it returns five most recent comments' do
       post = FactoryBot.create(:post, author: user)
-      FactoryBot.create_list(:comment, 3, post: post, created_at: 4.days.ago)
-      recent_comments = FactoryBot.create_list(:comment, 5, post: post)
+      FactoryBot.create_list(:comment, 3, post:, created_at: 4.days.ago)
+      recent_comments = FactoryBot.create_list(:comment, 5, post:)
 
       expect(post.recent_comments).to eq(recent_comments.reverse)
     end
