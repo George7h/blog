@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title>Posts</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <link rel="stylesheet" href="">
-    </head>
-    <body>
-      <h1>Here is a single post</h1>
-    </body>
-</html>
+
+<div id="post_container_detailed">
+<h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
+<h3><%= @post.title %></h3>
+<p>Comments: <%= @post.comments_count %></p>
+<p>Likes: <%= @post.likes_count %></p>
+<p><%= @post.text %></p>
+
+<ul id="comments_container">
+  <% @post.comments.each do |comment| %>
+    <li id="comment">
+      <%= comment.user.name %>:
+      <%= comment.text %>
+      <%= comment.created_at %>
+    </li>
+  <% end %>
+</ul>
+</div>
