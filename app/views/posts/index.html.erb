@@ -7,9 +7,9 @@
 </div>
 </div>
 
-
+<div id="Create_post_button">
 <%= link_to "Create Post", new_user_post_path(@current_user) %>
-
+</div>
 
 <% @posts.each_with_index do |post, i| %>
   <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
