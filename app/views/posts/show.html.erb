@@ -6,6 +6,8 @@
 <p>Likes: <%= @post.likes_count %></p>
 <p><%= @post.text %></p>
 
+ <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
+
 <ul id="comments_container">
   <% @post.comments.each do |comment| %>
     <li id="comment">
@@ -14,5 +16,9 @@
       <%= comment.created_at %>
     </li>
   <% end %>
+
+<%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
+
+
 </ul>
 </div>
