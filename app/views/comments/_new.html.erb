@@ -1,0 +1,4 @@
+<%= form_for [@user, @post, @comment], url: user_post_comments_path(@user, @post) do |f| %>
+  <%= f.text_area :text, placeholder: 'Write your comment...', rows: 3 %>
+  <%= f.submit "Submit Comment", id: "submit_comment" %>
+<% end %>
