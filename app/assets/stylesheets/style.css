@@ -112,6 +112,36 @@ ul {
   margin-top: -0.7rem;
 }
 
+#new_comment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+textarea {
+  width: auto;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding: 10px;
+}
+
+#submit_comment {
+  background-color: #b5eba7;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-self: center;
+}
+
+#Like_button {
+  background-color: #99a4ee;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-self: center;
+}
+
 li {
   list-style-type: none;
 }

@@ -17,8 +17,12 @@
     </li>
   <% end %>
 
-<%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
+
 
 
 </ul>
+
+<div id="comment_textbox">
+  <%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
+</div>
 </div>

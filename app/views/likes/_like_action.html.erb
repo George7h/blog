@@ -2,6 +2,6 @@
   <div>
     <%= form.hidden_field :post_id, value: post.id %>
     <%= form.hidden_field :user_id, value: user.id %>
-    <%= form.submit "Liked the post" %>
+    <%= form.submit "Like this post" , id: "Like_button" %>
   </div>
 <% end %>
