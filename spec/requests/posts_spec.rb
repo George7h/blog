@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   context 'GET /index' do
-    before :each do
-      get '/users/:user_id/posts'
+    let(:user) { FactoryBot.create(:user) }
+
+    before do
+      get user_posts_path(user)
     end
 
     it 'returns successful response' do
@@ -19,7 +21,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a list of posts for a given user</h1>')
+      expect(response.body).to include('<h2>John Doe</h2><br>')
     end
   end
 
@@ -45,7 +47,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a single post</h1>')
+      expect(response.body).to include('<h2>Post #1</h2>')
     end
   end
 end
