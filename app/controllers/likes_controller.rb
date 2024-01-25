@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     else
       flash[:alert] = 'Like not created'
     end
-    redirect_to user_post_path(@current_user, @like.post)
+    redirect_to user_post_path(current_user, @like.post)
   end
 
   private
