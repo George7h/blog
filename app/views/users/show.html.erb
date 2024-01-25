@@ -1,11 +1,10 @@
-
 <div id="user_gap">
   <div id="selected_user">
-    <%= image_tag @user.photo, id: "user_photo" %><br>
-      <div id="user_text">
-        <h2><%= @user.name %></h2><br>
-        <p>Number of posts: <%= @user.postsCounter %></p>
-      </div>
+    <%= image_tag(@user.photo.presence || 'face.svg', id: "user_photo") %><br>
+    <div id="user_text">
+      <h2><%= @user.name %></h2><br>
+      <p>Number of posts: <%= @user.postsCounter %></p>
+    </div>
   </div>
   <div id="user_bio">
     <h2>Bio</h2><br>
@@ -14,18 +13,21 @@
 
   <h2>Recent Posts:</h2>
   <% @user.recent_posts.each_with_index do |post, i| %>
-  <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
-    <li id="post_container">
-      <h3>Post #<%= i + 1 %></h3>
-      <h4><%= post.title %></h4>
-      <%= truncate(post.text, length: 250, omission: '...') %>
-    <br>
-    <div id="post_break">
-      <p>Comments: <%= post.comments_count %></p>
-      <p>Likes: <%= post.likes_count %></p>
-    </div>
-    </li>
+    <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
+      <li id="post_container">
+        <h3>Post #<%= i + 1 %></h3>
+        <h4><%= post.title %></h4>
+        <%= truncate(post.text, length: 250, omission: '...') %>
+        <br>
+        <div id="post_break">
+          <p>Comments: <%= post.comments_count %></p>
+          <p>Likes: <%= post.likes_count %></p>
+        </div>
+      </li>
+    <% end %>
   <% end %>
-<% end %>
-<div id="see_all_button"><%= link_to "See all posts", "/users/#{@user.id}/posts" %></div>
+  <div id="see_all_button"><%= link_to "See all posts", "/users/#{@user.id}/posts" %></div>
+  <div id="back-button">
+    <%= link_to 'Back', :back %>
+  </div>
 </div>
