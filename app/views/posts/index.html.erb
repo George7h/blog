@@ -1,42 +1,46 @@
 <div id="user_gap">
   <div id="selected_user">
-<%= image_tag @user.photo, id: "user_photo" %><br>
-<div id="user_text">
-  <h2><%= @user.name %></h2><br>
-  <p>Number of posts: <%= @user.postsCounter %></p>
-</div>
-</div>
+    <%= image_tag(@user.photo.presence || 'face.svg', id: "user_photo") %><br>
+    <div id="user_text">
+      <h2><%= @user.name %></h2><br>
+      <p>Number of posts: <%= @user.postsCounter %></p>
+    </div>
+  </div>
 
-<div id="Create_post_button">
-<%= link_to "Create Post", new_user_post_path(@current_user) %>
-</div>
+  <div id="Create_post_button">
+    <%= link_to "Create Post", new_user_post_path(@current_user) %>
+  </div>
 
-<% @posts.each_with_index do |post, i| %>
-  <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
-    <li id="post_container">
-      <h2>Post #<%= i + 1 %></h2>
-      <h3><%= post.title %></h3>
-      <p>
-        <%= truncate(post.text, length: 250, omission: '...show more') %>
-        
-      </p>
-      <div id="post_break">
-      <p>Comments: <%= post.comments_count %></p>
-      <p>Likes: <%= post.likes_count %></p>
-      </div>
-    </li>
-  <% end %>
-  <ul id="comments_container">
-    <h4>5 Most recent comments:</h4>
-    <% post.recent_comments.each do |comment| %>
-      <li id="comment">
-        <%= comment.user.name %>:
-        <%= comment.text %>
+  <% @posts.each_with_index do |post, i| %>
+    <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
+      <li id="post_container">
+        <h2>Post #<%= i + 1 %></h2>
+        <h3><%= post.title %></h3>
+        <p>
+          <%= truncate(post.text, length: 250, omission: '...show more') %>
+
+        </p>
+        <div id="post_break">
+          <p>Comments: <%= post.comments_count %></p>
+          <p>Likes: <%= post.likes_count %></p>
+        </div>
       </li>
     <% end %>
-  </ul>
-<% end %>
+    <ul id="comments_container">
+      <h4>5 Most recent comments:</h4>
+      <% post.recent_comments.each do |comment| %>
+        <li id="comment">
+          <%= comment.user.name %>:
+          <%= comment.text %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<div id="paginate">
-<%= will_paginate%>
+  <div id="paginate">
+    <%= will_paginate%>
+  </div>
+  <div id="back-button">
+    <%= link_to 'Back', :back %>
+  </div>
 </div>
