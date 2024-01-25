@@ -5,7 +5,7 @@
 <p>Comments: <%= @post.comments_count %></p>
 <p>Likes: <%= @post.likes_count %></p>
 <p><%= @post.text %></p>
-
+<p>Written by <%= @post.author.name %></p>
  <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
 
 <ul id="comments_container">

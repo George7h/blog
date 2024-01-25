@@ -19,35 +19,32 @@ RSpec.describe 'Users', type: :request do
 
     it 'renders the correct placeholder' do
       get users_url
-      expect(response.body).to include('<h1>Here is a list of users</h1>')
+      expect(response.body).to include('<h2>Tom</h2>')
     end
   end
 
   context 'GET /show' do
-    let(:valid_attributes) { { 'name' => 'John Doe' } }
+    let(:user) { FactoryBot.create(:user) }
 
     it 'returns successful response' do
-      user = User.create! valid_attributes
       get user_url(user)
       expect(response).to be_successful
     end
 
     it 'returns http status 200' do
-      user = User.create! valid_attributes
       get user_url(user)
       expect(response.status).to eq(200)
     end
 
     it 'renders the correct view file' do
-      user = User.create! valid_attributes
       get user_url(user)
       expect(response).to render_template(:show)
     end
 
     it 'renders the correct placeholder' do
-      user = User.create! valid_attributes
       get user_url(user)
-      expect(response.body).to include('<h1>Here is a selected user profile</h1>')
+      expect(response.body).to include('<h2>John Doe</h2>')
+      expect(response.body).to include('<h2>Bio</h2>')
     end
   end
 end
