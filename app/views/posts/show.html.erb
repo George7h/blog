@@ -1,11 +1,12 @@
 <div id="post_container_detailed">
-  <h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
-  <h3><%= @post.title %></h3>
-  <p>Comments: <%= @post.comments_count %></p>
-  <p>Likes: <%= @post.likes_count %></p>
-  <p><%= @post.text %></p>
 
-  <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
+<h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
+<h3><%= @post.title %></h3>
+<p>Comments: <%= @post.comments_count %></p>
+<p>Likes: <%= @post.likes_count %></p>
+<p><%= @post.text %></p>
+<p>Written by <%= @post.author.name %></p>
+ <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
 
   <ul id="comments_container">
     <% @post.comments.each do |comment| %>

@@ -81,13 +81,26 @@ Install this project with:
 
 ```sh
   cd blog
-  gem install
   bundle install
+  
+```
+
+
+
+Create the local database:
+
+ Edit databasy.yml and rename the database name and username and password according to your local environment then run:
+
+```sh
+  rails db:create
+  rails migrate
+  rails db:seed
 ```
 
 ### Usage
 
 To run the project, execute the following command:
+
 
 ```sh
   rails server
