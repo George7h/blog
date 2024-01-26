@@ -1,5 +1,5 @@
-
 <div id="post_container_detailed">
+
 <h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
 <h3><%= @post.title %></h3>
 <p>Comments: <%= @post.comments_count %></p>
@@ -8,21 +8,24 @@
 <p>Written by <%= @post.author.name %></p>
  <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
 
-<ul id="comments_container">
-  <% @post.comments.each do |comment| %>
-    <li id="comment">
-      <%= comment.user.name %>:
-      <%= comment.text %>
-      <%= comment.created_at %>
-    </li>
-  <% end %>
+  <ul id="comments_container">
+    <% @post.comments.each do |comment| %>
+      <li id="comment">
+        <%= comment.user.name %>:
+        <%= comment.text %>
+        <%= comment.created_at %>
+      </li>
+    <% end %>
 
 
 
 
-</ul>
+  </ul>
 
-<div id="comment_textbox">
-  <%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
+  <div id="comment_textbox">
+    <%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
+  </div>
 </div>
+<div id="back-button">
+  <%= link_to 'Back', :back %>
 </div>

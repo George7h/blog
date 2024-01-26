@@ -2,20 +2,38 @@
 <html>
   <head>
     <title>Blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-<header>
-  <h1>Blog app</h1>
-  </header>
   <body>
-    <div id = "contain">     
-    <%= yield %>
-</div>
+    <header>
 
+      <% if user_signed_in? %>
+          <%= link_to "Profile", edit_user_registration_path %>
+      <% end %>
+
+      <h1>Blog app</h1>
+
+      <% if user_signed_in? %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, id:"Create_post_button" %>
+      <% end %>
+
+
+      
+    </header>
+
+    <div id="contain">
+      <% unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) %>
+        
+      <% end %>
+
+      <p><%= notice %></p> 
+      <p><%= alert %></p>    
+      <%= yield %>
+    </div>
   </body>
 </html>
