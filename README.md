@@ -120,10 +120,22 @@ To run the project tests, execute the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **George Hamman**
 
 - GitHub: [@githubhandle](https://github.com/George7h)
 - LinkedIn: <a href="https://www.linkedin.com/in/george-hamman-95b98224b/">George Hamman</a>
+  
+👤 **malikhaiderkhan**
+
+- GitHub: [@malikhaiderkhan](https://github.com/malikhaiderkhan)
+- Twitter: [@malikhaiderkha](https://twitter.com/malikhaiderkha)
+- LinkedIn: [@malikhaiderkhan](https://www.linkedin.com/in/malik-haider-khan-b53188140)
+
+👤 **Fombi Magnus-Favour**
+
+- GitHub: [Fombi-Favour](https://github.com/Fombi-Favour)
+- Twitter: [@FavourFombi](https://twitter.com/FavourFombi)
+- LinkedIn: [Fombi Favour](https://www.linkedin.com/in/fombi-favour/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
