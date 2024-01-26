@@ -8,4 +8,12 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
   end
+
+  namespace :api, defaults: { format: 'json' } do
+    resources :users, only: [:index, :show] do
+      resources :posts, only: [:index, :show] do
+        resources :comments, only: [:index, :create]
+      end
+    end
+  end
 end
