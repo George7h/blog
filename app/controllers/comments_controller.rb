@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   layout 'application'
   before_action :set_user_post
 
@@ -20,6 +21,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.post.decrement!(:comments_count) if @comment.post.present?
+    @comment.destroy
+    redirect_to user_post_path(@user, @post)
+  end
+
   private
 
   def set_user_post
@@ -29,6 +37,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:text, :post_id, :user_id)
   end
 end

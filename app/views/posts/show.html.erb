@@ -1,12 +1,17 @@
 <div id="post_container_detailed">
+  <h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
 
-<h2>Post #<%= @post.author.posts.index(@post) + 1 %></h2>
-<h3><%= @post.title %></h3>
-<p>Comments: <%= @post.comments_count %></p>
-<p>Likes: <%= @post.likes_count %></p>
-<p><%= @post.text %></p>
-<p>Written by <%= @post.author.name %></p>
- <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
+  <% if can? :destroy, @post %>
+    <%= button_to 'Delete Post', user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' },class: "Delete_button" %>
+  <% end %>
+
+  <h3><%= @post.title %></h3>
+  <p>Comments: <%= @post.comments_count %></p>
+  <p>Likes: <%= @post.likes_count %></p>
+  <p><%= @post.text %></p>
+  <p>Written by <%= @post.author.name %></p>
+
+  <%= render partial: 'likes/like_action', locals: { post: @post, user: @current_user, like: Like.new } %>
 
   <ul id="comments_container">
     <% @post.comments.each do |comment| %>
@@ -14,18 +19,24 @@
         <%= comment.user.name %>:
         <%= comment.text %>
         <%= comment.created_at %>
+
+        <% if can? :destroy, comment %>
+          <%= button_to 'Delete Comment', user_post_comment_path(@user, @post, comment), method: :delete, data: { confirm: 'Are you sure?' },class: "Delete_button" %>
+        <% end %>
       </li>
     <% end %>
-
-
-
-
   </ul>
 
   <div id="comment_textbox">
     <%= render partial: 'comments/new', locals: { user: @user, post: @post, comment: @comment } %>
   </div>
 </div>
-<div id="back-button">
-  <%= link_to 'Back', :back %>
+
+<div id="bottom_buttons_contain">
+  <div id="back-button">
+    <%= link_to 'Back', user_posts_path(@user) %>
+  </div>
+  <div id="see-all-bloggers">
+    <%= link_to 'See All Bloggers', users_path %>
+  </div>
 </div>

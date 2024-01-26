@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   layout 'application'
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:author, :comments).order(created_at: :desc)
@@ -30,6 +31,13 @@ class PostsController < ApplicationController
       flash[:alert] = 'Post not created'
       render :new
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.author.decrement!(:postsCounter)
+    @post.destroy
+    redirect_to user_posts_url
   end
 
   private

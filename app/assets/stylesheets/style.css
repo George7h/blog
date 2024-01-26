@@ -254,7 +254,6 @@ li {
 }
 
 #paginate {
-  background-color: #222;
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -334,4 +333,46 @@ li {
   align-self: center;
   width: 500px;
   justify-content: center;
+}
+
+#bottom_buttons_contain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#see-all-bloggers {
+  background-color: #ea7171;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-self: center;
+  color: white;
+  align-self: center;
+  width: 500px;
+  justify-content: center;
+}
+
+#see-recent-posts {
+  background-color: #ccea71;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-self: center;
+  color: white;
+  align-self: center;
+  width: 500px;
+  justify-content: center;
+}
+
+.Delete_button {
+  background-color: #ec1919;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-self: center;
+  color: white;
 }
