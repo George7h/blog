@@ -33,12 +33,11 @@ class PostsController < ApplicationController
     end
   end
 
-def destroy
-
- @post = Post.find(params[:id])
- @post.author.decrement!(:postsCounter)
-  @post.destroy
-  redirect_to user_posts_url
+  def destroy
+    @post = Post.find(params[:id])
+    @post.author.decrement!(:postsCounter)
+    @post.destroy
+    redirect_to user_posts_url
   end
 
   private
