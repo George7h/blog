@@ -1,5 +1,5 @@
-module
-  class Api::PostsController < ApplicationController
+module Api
+  class PostsController < ApplicationController
     skip_before_action :authenticate_user!
     def index
       user = User.find(params[:user_id])
