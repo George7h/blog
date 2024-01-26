@@ -27,7 +27,12 @@
     <% end %>
   <% end %>
   <div id="see_all_button"><%= link_to "See all posts", "/users/#{@user.id}/posts" %></div>
-  <div id="back-button">
-    <%= link_to 'Back', :back %>
+  <div id="bottom_buttons_contain">
+    <div id="back-button">
+      <%= link_to 'Back', :back %>
+    </div>
+    <div id="see-all-bloggers">
+      <%= link_to 'See All Bloggers', users_path %>
+    </div>
   </div>
 </div>
