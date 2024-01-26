@@ -6,8 +6,6 @@ class Ability
 
     return unless user.present?
 
-
-
     can :create, Post
     can :create, Comment
     can :create, Like
