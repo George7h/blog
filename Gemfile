@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'will_paginate'
+  gem 'devise-jwt'
 end
 
 group :development do
