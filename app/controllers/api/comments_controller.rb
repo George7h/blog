@@ -2,6 +2,7 @@ module Api
   class CommentsController < ApplicationController
     skip_before_action :authenticate_user!, only: %i[index create]
     skip_before_action :verify_authenticity_token
+    before_action :authenticate_user!, only: [:create]
     before_action :set_user_post
 
     def index
@@ -12,10 +13,9 @@ module Api
     end
 
     def create
-      @user = User.find(params[:user_id])
+      @user = current_user
       @post = @user.posts.find(params[:post_id])
       @comment = @post.comments.new(comment_params)
-      @comment.user = @user
 
       if @comment.save
         render json: @comment, status: :created
