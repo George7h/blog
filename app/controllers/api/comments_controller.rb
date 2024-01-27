@@ -5,11 +5,15 @@ module Api
     before_action :set_user_post
 
     def index
+      @user = User.find(params[:user_id])
+      @post = @user.posts.find(params[:post_id])
       @comments = @post.comments
       render json: @comments
     end
 
     def create
+      @user = User.find(params[:user_id])
+      @post = @user.posts.find(params[:post_id])
       @comment = @post.comments.new(comment_params)
       @comment.user = @user
 
